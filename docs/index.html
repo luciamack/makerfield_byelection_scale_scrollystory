@@ -1,0 +1,430 @@
+<!-- This article draws on templates made by Johnathan Soma and Aaron Reiss -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How a few thousand voters chose Britain's next Prime Minister</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+
+/* Making variables for different style choices to allow easy editing of page elements  */
+      :root {
+  /* Font info */
+  --font-body: 'Georgia', serif;
+  --font-heading: 'Lora', serif;
+  --font-ui: sans-serif;
+
+  --font-size-body: 19px;
+  --font-size-step: 1.25rem;
+  --line-height: 1.6;
+
+  /* Layout with central text*/
+  --content-width: 640px;
+  --text-width: 50%;
+  --step-spacing: 25rem;
+
+  /* Colours */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #d88f8f;
+  --muted-color: #A9A9A9;
+
+  /* Visual style for steps */
+  --border-radius: 6px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Defining basic page elements using the variables above */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height);
+}
+
+p {
+  margin: 0 0 1.5rem 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+}
+
+a {
+  color: var(--accent-color);}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+
+/* Key layout features outside the scrollytelling section */
+/* These containers the standard article content */
+.content {
+  max-width: var(--content-width);
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.text-block {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  max-width: 640px;
+  margin: 4rem auto 2rem auto;
+  padding: 0 1rem;
+}
+
+
+/* These lines create a stylized footer */
+/* Grey background container with text centred */
+.footer {
+  background: #f7f7f7;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 4rem;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Making paragraphs of the fotter smaller than the rest of the story */
+.footer p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 0.8rem;
+}
+
+/* Making the first line of the footer bold */
+.footer p:first-child {
+  font-weight: 600;
+  color: #222;
+}
+
+
+/* These lines style the warning message mobile users get when they try to access the story */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: palevioletred;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  max-width: 400px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.modal button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+} 
+
+
+/* These lines style the scrolly elements in the story */
+      
+/* These lines organise the layout of the scroll section*/
+#scrolly {
+  position: relative;
+  padding: 1rem;
+}
+
+.scrolly-overlay {
+  position: relative;
+  padding: 0;
+  max-width: 35rem;
+  margin-left: 2px;
+  margin-right: auto;
+}
+
+.sticky-thing {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 0;
+  top: 0;
+  height: 100vh;
+  /* Center everything inside */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photoDiv {
+  width: 100%;
+  margin-right: 0px;
+  margin-left: auto;
+  display: block;
+  transition:
+    margin 1.5s 0s,
+    transform 2.5s 0s;
+}
+
+#zoomBox {
+    overflow: clip;    
+    margin-left: 44vw !important;
+    max-width: 53vw !important;
+    max-height: none !important;
+}
+
+/* These lines style the steps */
+.step {
+  margin-bottom: var(--step-spacing);
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.step p {
+  max-width: 100%;
+  font-size: 1.25rem;
+  margin: 0 auto 2rem 30px;
+  border: black;
+}
+    
+/* When it's less than 700 pixels wide, do normal scrollytelling */
+@media only screen and (min-width: 700px) {
+  #scrolly.side-by-side {
+    display: flex;
+  }
+
+  #scrolly.side-by-side > div {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75em;
+  }
+
+  #scrolly.side-by-side .scrolly-overlay {
+    margin-top: 70vh;
+    order: 0;
+    /* Change these to adjust sizing options */
+    min-width: 15rem;
+    max-width: 20rem;
+  }
+
+  #scrolly.side-by-side .sticky-thing {
+    order: 1;
+    flex-grow: 2;
+  }
+}
+
+    </style>
+		<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+	    <h1>How a few thousand voters chose Britain's next Prime Minister</h1>
+      <p>By <a href="https://www.linkedin.com/in/lucia-mackenzie-8b8858199/">Lucia Mackenzie</a></p>
+    </div>
+  <div class="text-block">
+  <p>Andy Burnham is on the cusp of becoming British Prime Minister with the backing of a tiny fraction of the electorate.</p>
+  <p>Affectionately known as King of the North, Burnham is a Labour party politician and has been Mayor of Greater Manchester for almost a decade. </p>
+  <p>While his popularity soared, current Prime Minister Keir Starmer faced fierce pressure to resign to make way for a new leader.</p>
+  <p>One Labour politician even stepped down from his job as a Member of Parliament to trigger a by-election. </p>
+  <p>The plan: have Burnham take over his seat and launch a formal leadership challenge.</p>
+  <p>Here is what happened next.</p>
+  </div>
+      <section id="scrolly">
+        <div class="sticky-thing">
+          <div id="zoomBox">
+            <img id="scrollyPhoto" class="photoDiv" src="images/blank_canvas.png">
+          </div>        
+        </div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step1">
+            <p>On June 18 2026, the people of Makerfield, a small area in North West England went to the polls.</p>
+            <p>Almost 25,000 of them voted Andy Burnham into Parliament, clearing the way for him to challenge Starmer as Prime Minister.</p>
+            <p>Throughout this story, every square represents 5,000 people.</p>
+          </div>
+          <div class="step" id="step2">
+            <p>Burnham won almost 55% of the votes cast, a decisive victory which ultimately prompted Starmer to resign a few days later.</p>
+          </div>
+          <div class="step" id="step3">
+            <p>While he won the vote with a comfortable majority, less than 60% of registered voters went to the polls.</p>
+            <p> That means Burnham technically has the backing of about a third of Makerfield's electorate.</p>
+          </div>
+          <div class="step" id="step31">
+            <p>The Makerfield by-election win gives Burnham his personal mandate to represent the constituency in Parliament.</p>
+            <p>Burnham has already ruled out calling an imminent general election to win a mandate to run the country at large.</p>
+            <p>Instead, he is relying on the Labour Party's general election victory in 2024 to bolster his democratic credentials.</p>
+          </div>
+          <div class="step" id="step4">
+            <p>In 2024, the Labour party won the support of 9.7 million voters across the U.K.</p>
+            <p>Burnham has promised to follow the mandate presented to voters during that election to justify becoming leader without the entire country's backing.</p>
+          </div>
+          <div class="step" id="step5">
+            <p>As Prime Minister, Burnham will wield significant power.</p>
+            <p>Labour won over a third of the vote in 2024, and with Britains first-past-the-post-electoral system that translated to a large majority of seats in Parliament.</p>
+          </div>
+          <div class="step" id="step6">
+            <p>Around 28.8 million valid votes were cast in the general election, meaning less than 60% of people registered to vote participated in the election.</p>
+          </div>
+           <div class="step" id="step7">
+            <p>That leaves Burnham likely to become Prime Minister based on the votes of less than 1 percent of the electorate.</p>
+          </div>
+        </div>
+      </section>
+      <br></br>
+      <div class="content">
+      <p>This is not the first time a Prime Minister has taken power from an unpopular predecessor between general elections: Britain has seen six Prime Ministers and three general elections in the last decade.</p>
+
+      <p>Most recently, Rishi Sunak, the Conservative party leader and Prime Minister before the 2024 general election ran unopposed to take over after Liz Truss' rapid resignation.</p>
+
+      <p>Andy Burnham is now cruising towards a similar situation.</p>
+      
+      <p>If no other Labour politician gets the support of enough lawmakers to be put on a leadership contest ballot by July 15, he will be appointed Labour Party leader, and, with the King's blessing, Prime Minister a matter of days later.</p>
+      </div>
+      <div class="footer">
+  <div class="footer-inner">
+    <p>You can find the code and data behind this article <a href="https://github.com/luciamack">here</a>.</p>
+    <p>The figures used in this article are illustrative.</p>
+    <p>Where data was not divisible by 5,000, rounding was used. For larger graphics, square roots were used to determine dimensions.</p>
+    <p>This article was inspired by <a href="https://www.nytimes.com/interactive/2016/08/01/us/elections/nine-percent-of-america-selected-trump-and-clinton.html">this New York Times piece</a> and drew on templates designed by Aaron Reiss and Jonathan Soma</p>
+  </div>
+</div>
+
+
+    <!-- Mobile Warning Modal -->
+    <div id="deviceModal" class="modal">
+      <div class="modal-content">
+        <span>
+          Welcome to my article <br><br> Sadly, this site is meant to be viewed on a computer, so if you are on a phone or tablet the formatting will be distorted. I recommend waiting until you are in front of a larger screen to enjoy!
+        </span>
+        <button id="continueBtn">Continue Anyway</button>
+      </div>
+    </div>
+
+<script>
+
+/* Scrollytelling code goes under here */
+
+  // Code for the Photo Div #1 (aka #scrollyPhoto1)
+    
+    // Entering Step One
+  d3.select("#step1").on('stepin',function(e) {
+    console.log("We've arrived at STEP ONE in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_1_annotated.png");
+    // d3.select("#scrollyPhoto").style("transform", "scale(2.9) translate(0%, -10%)");
+  })
+
+    // Entering Step Two
+    d3.select("#step2").on('stepin',function(e) {
+    console.log("We've arrived at STEP TWO in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_2_annotated.png");
+
+  })
+
+    // Entering Step Three
+    d3.select("#step3").on('stepin',function(e) {
+    console.log("We've arrived at STEP Three in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_3_annotated.png");
+  })
+
+  // Entering Step 3.1
+    d3.select("#step31").on('stepin',function(e) {
+    console.log("We've arrived at STEP Three point one in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_4.png");
+  })
+
+   // Entering Step Four
+    d3.select("#step4").on('stepin',function(e) {
+    console.log("We've arrived at STEP Four in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_5_annotated.png");
+  })
+
+  // Entering Step Five
+    d3.select("#step5").on('stepin',function(e) {
+    console.log("We've arrived at STEP five in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_6_annotated.png");
+  })
+
+  // Entering Step six
+    d3.select("#step6").on('stepin',function(e) {
+    console.log("We've arrived at STEP six in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_7_annotated.png");
+  })
+
+  // Entering Step seven
+    d3.select("#step7").on('stepin',function(e) {
+    console.log("We've arrived at STEP seven in the photo div")
+    d3.select("#scrollyPhoto").attr("src", "images/image_8_annotated.png");
+  })
+
+</script>
+
+<!-- LEAVE ALONE, scrolly code goes in the section below -->
+<script>
+    const scroller = scrollama();
+
+	scroller
+		.setup({
+			step: "#scrolly .scrolly-overlay .step",
+			offset: 0.8,
+			debug: false
+		})
+		.onStepEnter(function({ element, index, direction}) {
+			const event = new CustomEvent('stepin', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		})
+		.onStepExit(function({ element, index, direction }) {
+			const event = new CustomEvent('stepout', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		});
+
+	window.addEventListener("resize", scroller.resize);
+    </script>
+
+
+<!-- mobile phone warning modal -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const isSmallScreen = window.innerWidth <= 900;
+
+    if (isSmallScreen) {
+      document.getElementById("deviceModal").style.display = "flex";
+    }
+
+    document
+      .getElementById("continueBtn")
+      .addEventListener("click", function () {
+        document.getElementById("deviceModal").style.display = "none";
+      });
+  });
+</script>
+
+  </body>
+</html>

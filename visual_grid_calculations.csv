@@ -1,0 +1,8 @@
+Statistic description,Statistic,"Number of squares, each representing 5,000 people (=ROUND(statistic/5000))",Dimensions of square (= ROUND(sqrt(Bx))),Source,Notes
+Makerfield votes for Andy Burnham,"24,927",5,,https://members.parliament.uk/constituency/4165/election/558,
+Makerfield votes for other candidates,"20,549",4,,https://members.parliament.uk/constituency/4165/election/559,
+Makerfield overall electorate,"77,462",15,,https://members.parliament.uk/constituency/4165/election/560,
+Makerfield didn't vote,"31,986",6,,https://members.parliament.uk/constituency/4165/election/561,
+2024 General Election votes for Labour,"9,708,716",1942,44,https://researchbriefings.files.parliament.uk/documents/CBP-10009/CBP-10009.pdf,
+2024 General Election all valid votes,"28,809,340",5762,76,https://researchbriefings.files.parliament.uk/documents/CBP-10009/CBP-10009.pdf,
+2024 General Election registered electorate,"48,200,000",9640,98,https://researchbriefings.files.parliament.uk/documents/CBP-10009/CBP-10009.pdf,"The number of registered voters differs slightly from source to source. Eg: BBC lists 48,208,743, while the constituency results file on the House of Commons website suggests the total electorate was 48,224,212. With rounding, if either of these numbers are used the result is still a 98 by 98 square. "
